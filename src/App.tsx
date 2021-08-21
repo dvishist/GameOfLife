@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import produce from 'immer'
 const height = 35
-const width = 55
+const width = 80
 
 type cell = 1 | 0
 
@@ -56,11 +56,19 @@ function App() {
 			})
 		})
 
-		setTimeout(playGame, 400)
+		setTimeout(playGame, 200)
 	}, [])
 
 	return (
 		<>
+			<a
+				target='_blank'
+				rel='noreferrer'
+				href='https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life'
+			>
+				Game Of Life
+			</a>
+			<br />
 			<button
 				onClick={() => {
 					setRunning(!running)
@@ -78,7 +86,7 @@ function App() {
 					setGrid(() => {
 						const rows = []
 						for (let i = 0; i < height; i++) {
-							rows.push(Array.from(Array(width), () => (Math.random() > 0.8 ? 1 : 0)))
+							rows.push(Array.from(Array(width), () => (Math.random() < 0.3 ? 1 : 0)))
 						}
 						return rows
 					})
